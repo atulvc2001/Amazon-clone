@@ -3,16 +3,21 @@ import "./Header.css";
 import Amazon_logo from "./images/Amazon-Symbol.jpg";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
+import { NavLink } from "react-router-dom";
+
+
 
 function Header() {
   return (
     <div className="header">
       {/* Header */}
-      <img
-        src={Amazon_logo}
-        className="header__logo"
-        alt="header_img"
-        />
+      <NavLink to="/" >
+        <img
+          src={Amazon_logo}
+          className="header__logo"
+          alt="header_img"
+          />
+      </NavLink>
         {/* Logo */}
       <div className="header__search">
         {/* Search */}
@@ -37,12 +42,14 @@ function Header() {
           <span className="header__optionLineTwo">Prime</span>
         </div>
 
-        <div className="header__optionBasket">
-          <ShoppingBasketIcon/>
-          <span className="header__optionLineTwo header__basketCount" >
-            0
-          </span>
-        </div>
+        <NavLink to="/checkout">
+          <div className="header__optionBasket">
+            <ShoppingBasketIcon/>
+            <span className="header__optionLineTwo header__basketCount" >
+              0
+            </span>
+          </div>
+        </NavLink>
 
       </div>
     </div>
