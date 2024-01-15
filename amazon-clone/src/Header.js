@@ -4,10 +4,14 @@ import Amazon_logo from "./images/Amazon-Symbol.jpg";
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
 import { NavLink } from "react-router-dom";
-
+import { useStateValue } from "./StateProvider"
 
 
 function Header() {
+
+
+  const [{basket}, dispatch] = useStateValue();
+
   return (
     <div className="header">
       {/* Header */}
@@ -27,10 +31,12 @@ function Header() {
 
       <div className="header__nav">
 
-        <div className="header__option">
-          <span className="header__optionLineOne">Hello Guest</span>
-          <span className="header__optionLineTwo">Sign In</span>
-        </div>
+        <NavLink to="/login">
+          <div className="header__option">
+            <span className="header__optionLineOne">Hello Ram</span>
+            <span className="header__optionLineTwo" >Sign In</span>
+          </div>
+        </NavLink>
 
         <div className="header__option">
           <span className="header__optionLineOne">Returns</span>
@@ -46,7 +52,7 @@ function Header() {
           <div className="header__optionBasket">
             <ShoppingBasketIcon/>
             <span className="header__optionLineTwo header__basketCount" >
-              0
+              {basket?.length}
             </span>
           </div>
         </NavLink>
