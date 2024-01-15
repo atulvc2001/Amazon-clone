@@ -23,7 +23,7 @@ const Login = () => {
           <h5>Password</h5>
           <input type="password" />
 
-          <button>Sign In</button>
+          <button className='login__signInButton'>Sign In</button>
         </form>
 
         <p>
@@ -31,6 +31,8 @@ const Login = () => {
           see our privacy Notice, our Cookies Notice and our Interest-Based Ads
           Notice.
         </p>
+
+        <button className="login__registerButton">Create your Amazon Account</button>
       </div>
     </div>
   );
