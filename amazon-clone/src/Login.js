@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { NavLink } from "react-router-dom";
+import { auth } from "./firebase";
 
 const Login = () => {
 
@@ -15,6 +16,12 @@ const Login = () => {
   const register = e => {
     e.preventDefault();
 
+    auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((auth) => {
+          //  It successfully created a new user with email and password
+          console.log(auth)
+        })
     //  some fancy firbase register shit
   }
 
