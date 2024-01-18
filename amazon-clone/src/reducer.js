@@ -1,5 +1,6 @@
 export const initialState = {
     basket: [],
+    user:null
 };
 
 // Selector
@@ -9,8 +10,10 @@ export const getBasketTotal = (basket) => {
 
 const reducer = (state, action) => {
     
+    
     switch(action.type){
         case 'ADD_TO_BASKET':
+
             return {
                 ...state,
                 basket: [...state.basket, action.item],
@@ -28,10 +31,16 @@ const reducer = (state, action) => {
             } else {
                 console.warn(`Cant remove product (id: ${action.id}) as its not in basket! `)
             }
-
+            // console.log(state)
             return {
                 ...state,
                 basket:newBasket
+            }
+        
+        case "SET_USER":
+            return {
+                ...state,
+                user:action.user
             }
 
         default: 
