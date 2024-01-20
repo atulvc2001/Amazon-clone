@@ -3,10 +3,12 @@ import Home from './Home';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Checkout from './Checkout';
 import Layout from './Layout';
+import Payment from './Payment';
 import Login from './Login';
 import { useEffect } from 'react';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
+
 
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
@@ -44,6 +46,7 @@ function App() {
           <Route path="/" element={<Layout/>}>
             <Route index element={<Home/>} />
             <Route path="/checkout" element={<Checkout/>} />
+            <Route path='/payment' element={<Payment/>} />
           </Route>
       </Routes>
     </BrowserRouter>
