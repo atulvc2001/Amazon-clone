@@ -65,7 +65,7 @@ const Login = () => {
           Notice.
         </p>
 
-        <button onClick={register} className="login__registerButton">Create your Amazon Account</button>
+        <button onClick={register} className="login__registerButton">Create your Amazon account</button>
       </div>
     </div>
   );

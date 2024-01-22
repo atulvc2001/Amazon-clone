@@ -4,5 +4,9 @@
     },
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
+    },
+    "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+        "live-server-extension": true,
+        "live-preview-extension": true
     }
 }
