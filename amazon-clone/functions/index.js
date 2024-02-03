@@ -43,9 +43,20 @@ app.post("/payments/create", async (request, response) => {
   console.log("Payment Request Received!!!! for this AMOUNT >>>>>>> ", total);
 
   const paymentIntent = await stripe.paymentIntents.create({
-    amount: total,
+    amount: total, // subunits of currency
     currency: "usd",
-  });
+    description: "for amazon-clone project",
+    shipping: {
+      name: "Random singh",
+      address: {
+        line1: "510 Townsend St",
+        postal_code: "98140",
+        city: "San Francisco",
+        state: "CA",
+        country: "US",
+      },
+    },
+});
 
   //   OK - Created
   response.status(201).send({

@@ -7,6 +7,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from './reducer';
 import axios from './axios';
+import { db } from "./firebase";
 
 const Payment = () => {
 
@@ -43,7 +44,7 @@ const Payment = () => {
   }, [basket]);
 
   console.log("The secret is >>>>", clientSecret)
-  
+  console.log("this is the user  ",user)
 
   const handleSubmit = async (event) => {
     // does the processing stuff
@@ -55,20 +56,44 @@ const Payment = () => {
       payment_method: {
         card: elements.getElement(CardElement)
       }
-    }).then(({ paymentIntent }) => {
+    }).then(({ paymentIntent, error }) => {
       // paymentIntent = payment confirmation
-
-      setSucceeded(true);
-      setError(null);
-      setProcessing(false);
-
-      dispatch({
-        type: "EMPTY_BASKET"
-      })
-
-      navigate('/orders', { replace: true });
-
+      if (error) {
+        console.error("Error confirming card payment: ", error.message);
+        setProcessing(false);
+        setError(`Payment failed: ${error.message}`);
+      } else {
+        console.log("This is the payment Intent >>>> ", paymentIntent);
+    
+        // Check if paymentIntent is defined before accessing its properties
+        if (paymentIntent) {
+          db.collection('users')
+            .doc(user?.uid)
+            .collection('orders')
+            .doc(paymentIntent.id)
+            .set({
+              basket: basket,
+              amount: paymentIntent.amount,
+              created: paymentIntent.created
+            });
+        }
+    
+        setSucceeded(true);
+        setError(null);
+        setProcessing(false);
+    
+        dispatch({
+          type: "EMPTY_BASKET"
+        });
+    
+        navigate('/orders', { replace: true });
+      }
     })
+    .catch(error => {
+      console.error('Error confirming card payment:', error.message);
+      setProcessing(false);
+      setError(`Payment failed: ${error.message}`);
+    });
 
   }
 
