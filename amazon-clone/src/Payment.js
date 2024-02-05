@@ -92,7 +92,7 @@ const Payment = () => {
     .catch(error => {
       console.error('Error confirming card payment:', error.message);
       setProcessing(false);
-      setError(`Payment failed: ${error.message}`);
+      setError(`The payment has failed: ${error.message}`);
     });
 
   }
