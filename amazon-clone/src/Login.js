@@ -61,7 +61,7 @@ const Login = () => {
 
         <p>
           By Signing-in you agree to Amazon FAKE CLONE Conditions of Use & Sale. Please
-          see our privacy Notice, our Cookies Notice and our Interest-Based Ads
+          see our Privacy Notice, our Cookies Notice and our Interest-Based Ads
           Notice.
         </p>
 
