@@ -7,7 +7,7 @@ const Orders = () => {
   const [{basket, user}, dispatch] = useStateValue();
   const [orders, setOrders] = useState([]);
 
-  // use
+  // useEffe
 
   return (
     <div class="orders">
