@@ -1,5 +1,7 @@
 # Amazon Clone
 
+https://clone-808bd.web.app/
+
 This project is an Amazon clone built using React, Firebase, and Stripe. It closely mimics the functionality and user experience of the original Amazon website, allowing users to browse products, add items to their cart, and securely checkout using Stripe's payment gateway.
 
 ## Technologies Used:
